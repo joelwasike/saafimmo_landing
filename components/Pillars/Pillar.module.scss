@@ -1,5 +1,18 @@
 .pillars {
-  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 50%, #f0f9ff 100%);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: radial-gradient(circle at 70% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
   h3 {
     padding: min(80px, 10%);
     padding-bottom: 0;
@@ -8,7 +21,23 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     color: #1a1a1a;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #2563eb, #1e40af);
+      border-radius: 2px;
+    }
   }
+
   &-content {
     display: flex;
     justify-content: center;
@@ -16,25 +45,49 @@
     flex-wrap: wrap;
     padding: 0 min(80px, 10%);
     padding-bottom: min(80px, 10%);
+
     .pillar-card {
       position: relative;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       transform: none;
       margin-left: 10px;
       margin-bottom: 4px;
       margin-right: 2px;
-      border-radius: 16px;
+      border-radius: 20px;
       background: #1a1a1a;
       overflow: hidden;
       height: 400px;
       min-height: 400px;
+      animation: fadeInUp 0.6s ease-out backwards;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+      &:nth-child(1) { animation-delay: 0.1s; }
+      &:nth-child(2) { animation-delay: 0.2s; }
+      &:nth-child(3) { animation-delay: 0.3s; }
+      &:nth-child(4) { animation-delay: 0.4s; }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 1;
+      }
+
       &:hover {
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        -webkit-box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 25px 70px rgba(37, 99, 235, 0.3);
         z-index: 10;
-        transform: translateY(-8px) scale(1.02);
-        -webkit-transform: translateY(-8px) scale(1.02);
+        transform: translateY(-12px) scale(1.03);
+
+        &::before {
+          opacity: 1;
+        }
+
         .pillar-card {
           &-text {
             .description {
@@ -43,6 +96,10 @@
               font-size: 0.9rem;
               line-height: 1.6;
             }
+
+            h4::after {
+              width: 100%;
+            }
           }
         }
       }
@@ -50,23 +107,28 @@
       &-content {
         position: relative;
         background: #1a1a1a;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
         height: 100%;
         width: 100%;
       }
+
       &-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: -1;
-        border-radius: 16px;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+        border-radius: 20px;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
         display: block;
+        filter: brightness(0.9);
       }
+
       &:hover &-image {
-        transform: scale(1.05);
+        transform: scale(1.1);
+        filter: brightness(0.75);
       }
+
       &-text {
         padding: min(32px, 1rem);
         position: absolute;
@@ -74,26 +136,48 @@
         left: 0;
         right: 0;
         color: white;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+        z-index: 2;
+        transition: padding 0.5s ease;
+
         h4 {
           margin-bottom: 12px;
           font-size: 1.5rem;
           font-weight: 700;
           letter-spacing: -0.01em;
+          position: relative;
+          display: inline-block;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb, #60a5fa);
+            transition: width 0.5s ease;
+          }
         }
+
         p {
           margin-bottom: 12px;
           font-size: 0.95rem;
           opacity: 0.95;
         }
+
         .description {
           max-height: 0;
           opacity: 0;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
           margin-bottom: 0;
           font-size: 0.9rem;
           line-height: 1.6;
         }
+      }
+
+      &:hover &-text {
+        padding-bottom: min(40px, 1.5rem);
       }
     }
   }
