@@ -63,9 +63,10 @@
         text-decoration: none;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;
 
         &:hover {
-          transform: scale(1.05) translateY(-2px);
+          transform: scale(1.05) translateY(-2px) rotate(2deg);
           filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
         }
       }

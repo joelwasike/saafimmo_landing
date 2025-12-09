@@ -39,7 +39,7 @@
     p {
       font-size: 24px;
       margin: 48px 0;
-      animation: fadeIn 1s ease-out;
+      animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
     }
 
     a {
@@ -53,7 +53,7 @@
     }
 
     .button-container {
-      animation: fadeInUp 0.8s ease-out 0.3s backwards;
+      animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s backwards;
 
       .icon {
         display: inline-flex;
@@ -67,12 +67,17 @@
         background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+        animation: bounce 2s ease-in-out infinite;
+        
+        &:nth-child(1) { animation-delay: 0.6s; }
+        &:nth-child(2) { animation-delay: 0.8s; }
 
         &:hover {
           border-color: rgba(255, 255, 255, 0.9);
           background: rgba(255, 255, 255, 0.2);
-          transform: translateY(-6px) scale(1.1);
+          transform: translateY(-6px) scale(1.15) rotate(5deg);
           box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(255, 255, 255, 0.1);
+          animation: wiggle 0.5s ease-in-out;
         }
       }
     }

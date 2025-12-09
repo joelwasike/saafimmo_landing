@@ -94,7 +94,7 @@
       margin-bottom: 28px;
       letter-spacing: -0.03em;
       text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
-      animation: fadeInUp 1s ease-out 0.5s backwards;
+      animation: slideUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s backwards;
       background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -107,7 +107,12 @@
     font-size: clamp(1rem, 2vw, 1.25rem);
     line-height: 1.6;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out 0.6s backwards;
+    animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s backwards;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateX(5px);
+    }
   }
 }
 

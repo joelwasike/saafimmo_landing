@@ -16,9 +16,10 @@ import { useRouter } from 'next/router';
 
 const options = [
   { title: 'Get Started' },
+  { title: 'Login', link: 'https://saafimmo.theliberec.com/', external: true },
   { title: 'Sponsors', link: '/sponsor' },
   { title: 'About us', link: '/?about-us=true' },
-  { title: 'Careers', link: '/career' },
+  { title: 'Resources', link: '/career' },
 ];
 
 const Sidebar: React.FC<any> = ({ setOpen, open }) => {
@@ -58,9 +59,13 @@ const Sidebar: React.FC<any> = ({ setOpen, open }) => {
             </ListItemIcon> */}
             <ListItemText>
               {option.link ? (
-                <Link href={option.link}>
-                  <a onClick={option.title === 'About us' ? handleAboutUsClick : undefined}>{option.title}</a>
-                </Link>
+                option.external ? (
+                  <a href={option.link} target="_blank" rel="noopener noreferrer">{option.title}</a>
+                ) : (
+                  <Link href={option.link}>
+                    <a onClick={option.title === 'About us' ? handleAboutUsClick : undefined}>{option.title}</a>
+                  </Link>
+                )
               ) : (
                 <a onClick={handleButtonClick}>{option.title}</a>
               )}

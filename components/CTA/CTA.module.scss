@@ -43,10 +43,15 @@
         letter-spacing: -0.03em;
         margin-bottom: 20px;
         color: #1a1a1a;
-        animation: fadeInUp 0.8s ease-out;
+        animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
         position: relative;
         display: inline-block;
         line-height: 1.2;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-3px);
+        }
 
         &::after {
           content: '';
@@ -65,7 +70,7 @@
       &-part {
       flex: 0.5;
       margin: 0 min(40px, 5%);
-      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
 
       .ui-button {
         width: auto;
@@ -101,15 +106,41 @@
       :global(.MuiInputBase-root) {
         color: #1a1a1a;
         border-color: #d1d5db;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: fadeInUp 0.6s ease-out backwards;
+        
+        &:focus-within {
+          transform: translateY(-2px);
+          border-color: #2563eb;
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
       }
 
       :global(.MuiInput-root) {
         color: #1a1a1a;
         border-color: #d1d5db;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        &:focus-within {
+          transform: translateY(-2px);
+          border-color: #2563eb;
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
       }
 
       :global(.MuiInputBase-inputMultiline) {
         color: #1a1a1a !important;
+        transition: all 0.3s ease;
+      }
+      
+      :global(.MuiGrid-item) {
+        animation: fadeInUp 0.6s ease-out backwards;
+        
+        &:nth-child(1) { animation-delay: 0.1s; }
+        &:nth-child(2) { animation-delay: 0.15s; }
+        &:nth-child(3) { animation-delay: 0.2s; }
+        &:nth-child(4) { animation-delay: 0.25s; }
+        &:nth-child(5) { animation-delay: 0.3s; }
       }
 
       a {

@@ -54,6 +54,10 @@ const Navbar: React.FC<NavbarProps> = ({
       text: 'Get Started',
       path: '/?cta=true',
     },
+    {
+      text: 'Login',
+      path: 'https://saafimmo.theliberec.com/',
+    },
   ];
 
   const [activeLogoColor, setActiveLogoColor] = useState('');
@@ -86,8 +90,9 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className={styles['sidebar-desktop']}>
           {menus &&
             menus.map((menu, idx) => {
+              const isLastTwo = idx >= menus.length - 2;
               const linkClass =
-                idx !== menus.length - 1
+                idx < menus.length - 2
                   ? trigger || dark
                     ? 'link-trigger'
                     : 'link'
@@ -95,13 +100,21 @@ const Navbar: React.FC<NavbarProps> = ({
                   ? 'button-trigger'
                   : 'button';
               const homeClass = home ? (trigger ? 'home-trigger' : 'home') : '';
+              const isExternalLink = menu.path.startsWith('http');
+              
               return (
                 <div className={styles['navbar-content-box']} key={idx}>
-                  <Link href={menu.path} passHref>
-                    <a>
+                  {isExternalLink ? (
+                    <a href={menu.path} target="_blank" rel="noopener noreferrer">
                       <button className={`ui-button primary ${linkClass} ${homeClass}`}>{menu.text}</button>
                     </a>
-                  </Link>
+                  ) : (
+                    <Link href={menu.path} passHref>
+                      <a>
+                        <button className={`ui-button primary ${linkClass} ${homeClass}`}>{menu.text}</button>
+                      </a>
+                    </Link>
+                  )}
                 </div>
               );
             })}

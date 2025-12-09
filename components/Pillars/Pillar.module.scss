@@ -22,9 +22,14 @@
     letter-spacing: -0.03em;
     color: #1a1a1a;
     text-align: center;
-    animation: fadeInUp 0.8s ease-out;
+    animation: slideDown 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
     position: relative;
     line-height: 1.2;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.02);
+    }
 
     &::after {
       content: '';
@@ -61,14 +66,26 @@
       overflow: hidden;
       height: 400px;
       min-height: 400px;
-      animation: fadeInUp 0.6s ease-out backwards;
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.1);
 
-      &:nth-child(1) { animation-delay: 0.1s; }
-      &:nth-child(2) { animation-delay: 0.2s; }
-      &:nth-child(3) { animation-delay: 0.3s; }
-      &:nth-child(4) { animation-delay: 0.4s; }
+      &:nth-child(1) { 
+        animation-delay: 0.1s;
+        animation-name: slideInLeft;
+      }
+      &:nth-child(2) { 
+        animation-delay: 0.2s;
+        animation-name: slideUp;
+      }
+      &:nth-child(3) { 
+        animation-delay: 0.3s;
+        animation-name: slideUp;
+      }
+      &:nth-child(4) { 
+        animation-delay: 0.4s;
+        animation-name: slideInRight;
+      }
 
       &::before {
         content: '';
@@ -86,8 +103,9 @@
       &:hover {
         box-shadow: 0 32px 80px rgba(37, 99, 235, 0.25), 0 8px 24px rgba(0, 0, 0, 0.08);
         z-index: 10;
-        transform: translateY(-16px) scale(1.02);
+        transform: translateY(-16px) scale(1.02) rotate(0.5deg);
         border-color: rgba(37, 99, 235, 0.3);
+        animation: pulse 2s ease-in-out infinite;
 
         &::before {
           opacity: 1;
@@ -127,6 +145,8 @@
         transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
         display: block;
         filter: brightness(1);
+        animation: zoomIn 1s ease-out 0.5s backwards;
+        transform-origin: center center;
       }
 
       &:hover &-image {
@@ -154,6 +174,11 @@
           letter-spacing: -0.01em;
           position: relative;
           display: inline-block;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: translateX(5px);
+          }
 
           &::after {
             content: '';
