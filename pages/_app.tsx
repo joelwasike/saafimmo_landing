@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>Modern Property Management Platform - Streamline Your Operations</title>
+        <title>Your Real Estate and Condominium Management Solution - Streamline Your Operations</title>
         <meta
           name="description"
           content="Transform your property management operations with our comprehensive platform. Streamline tenant management, automate workflows, track maintenance, and gain real-time insights into your property portfolio."

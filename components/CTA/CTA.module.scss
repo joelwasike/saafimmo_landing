@@ -3,6 +3,7 @@
   color: #1a1a1a;
   position: relative;
   overflow: hidden;
+  padding: 80px 0;
 
   &::before {
     content: '';
@@ -36,29 +37,32 @@
     position: relative;
     z-index: 1;
 
-    h4 {
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      color: #1a1a1a;
-      animation: fadeInUp 0.8s ease-out;
-      position: relative;
-      display: inline-block;
+      h4 {
+        font-size: clamp(1.75rem, 3vw, 2.75rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        animation: fadeInUp 0.8s ease-out;
+        position: relative;
+        display: inline-block;
+        line-height: 1.2;
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(90deg, #2563eb, #1e40af);
-        border-radius: 2px;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          width: 80px;
+          height: 5px;
+          background: linear-gradient(90deg, #2563eb, #60a5fa, #2563eb);
+          background-size: 200% 100%;
+          border-radius: 3px;
+          animation: shimmer 3s ease-in-out infinite;
+        }
       }
-    }
 
-    &-part {
+      &-part {
       flex: 0.5;
       margin: 0 min(40px, 5%);
       animation: fadeInUp 0.8s ease-out 0.2s backwards;
@@ -96,12 +100,12 @@
 
       :global(.MuiInputBase-root) {
         color: #1a1a1a;
-        border-color: #1a1a1a;
+        border-color: #d1d5db;
       }
 
       :global(.MuiInput-root) {
         color: #1a1a1a;
-        border-color: #1a1a1a;
+        border-color: #d1d5db;
       }
 
       :global(.MuiInputBase-inputMultiline) {

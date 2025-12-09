@@ -22,34 +22,38 @@
 
     h3 {
       margin: 16px 0;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
       color: #1a1a1a;
       animation: fadeInUp 0.8s ease-out;
       position: relative;
+      line-height: 1.2;
 
       &::after {
         content: '';
         position: absolute;
-        bottom: -12px;
+        bottom: -16px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, #2563eb, #1e40af);
-        border-radius: 2px;
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, #60a5fa, #93c5fd, #60a5fa);
+        background-size: 200% 100%;
+        border-radius: 3px;
+        animation: shimmer 3s ease-in-out infinite;
       }
     }
 
     > p {
       font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 18px;
+      line-height: 28px;
       color: #6e7176;
       animation: fadeInUp 0.8s ease-out 0.2s backwards;
       text-align: center;
-      max-width: 600px;
+      max-width: 800px;
+      margin-top: 32px;
     }
   }
 
@@ -57,17 +61,17 @@
     padding: 40px 80px 80px;
     position: relative;
 
-    .person-card {
+    .info-card {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: flex-start;
-      padding: 24px;
+      padding: 32px;
       height: 100%;
       background: #ffffff;
-      border: 1px solid #e8ecef;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-      border-radius: 16px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+      border-radius: 20px;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       animation: fadeInUp 0.6s ease-out backwards;
       position: relative;
       overflow: hidden;
@@ -89,93 +93,81 @@
       &:nth-child(4) { animation-delay: 0.4s; }
 
       &:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
-        border-color: #2563eb;
+        transform: translateY(-12px);
+        box-shadow: 0 24px 64px rgba(96, 165, 250, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-color: rgba(96, 165, 250, 0.4);
+        background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
 
         &::before {
           left: 100%;
         }
+
+        .info-card-icon {
+          transform: scale(1.1) rotate(5deg);
+        }
       }
 
-      &-image {
-        width: 86px;
-        height: 86px;
-        object-fit: contain;
-        object-position: center;
-        transition: transform 0.3s ease;
-      }
-
-      &:hover &-image {
-        transform: scale(1.05);
+      &-icon {
+        margin-bottom: 20px;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(96, 165, 250, 0.08) 100%);
+        border-radius: 16px;
+        border: 1px solid rgba(96, 165, 250, 0.2);
       }
 
       &-content {
-        margin-left: 16px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        width: 100%;
 
         h4 {
-          margin-bottom: 10px;
-          font-weight: 600;
-          font-size: 16px;
-          line-height: 24px;
-          color: #1a1a1a;
-        }
-
-        &-role {
-          background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-          border-radius: 8px;
-          display: flex;
-          flex-direction: column;
-          padding: 6px 14px;
-          height: 28px;
-          min-height: 28px;
-          margin-bottom: 0.75rem;
-          position: relative;
-          overflow: hidden;
-
-          &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            animation: shimmer 2s infinite;
-          }
-
-          p {
-            color: white;
-            text-transform: capitalize;
-            font-size: 11px;
-            line-height: 16px;
-            height: 20px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-          }
-        }
-
-        .description {
-          font-size: 14px;
-          line-height: 20px;
-        }
-
-        .show {
-          font-size: 14px;
-          line-height: 20px;
+          margin-bottom: 16px;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 28px;
           color: #2563eb;
-          cursor: pointer;
-          font-weight: 600;
-          transition: all 0.2s ease;
+        }
 
-          &:hover {
-            color: #1e40af;
-            transform: translateX(4px);
-          }
+        &-description {
+          font-size: 15px;
+          line-height: 24px;
+          color: #4b5563;
+        }
+      }
+    }
+
+    .about-story {
+      margin-top: 60px;
+      padding: 48px;
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+
+      h4 {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 24px;
+        color: #2563eb;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 28px;
+        color: #4b5563;
+        margin-bottom: 20px;
+
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -202,6 +194,20 @@
 
     &-content {
       padding: 0 24px;
+
+      .about-story {
+        padding: 32px 24px;
+        margin-top: 40px;
+
+        h4 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 15px;
+          line-height: 24px;
+        }
+      }
     }
   }
 }

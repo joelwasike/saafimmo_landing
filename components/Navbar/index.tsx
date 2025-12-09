@@ -61,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({
   if (!activeLogoColor) setActiveLogoColor(logoColor);
 
   useEffect(() => {
-    setActiveLogoColor(trigger ? 'white' : logoColor);
+    setActiveLogoColor(trigger ? 'black' : logoColor);
   }, [trigger]);
 
   return (
@@ -108,7 +108,7 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
       <div className={styles['sidebar-trigger']} onClick={setOpen}>
-        <MenuIcon style={{ fontSize: 30 }} htmlColor={trigger ? 'white' : logoColor} />
+        <MenuIcon style={{ fontSize: 30 }} htmlColor={trigger ? 'black' : logoColor} />
       </div>
     </nav>
   );

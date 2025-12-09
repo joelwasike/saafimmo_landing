@@ -1,7 +1,7 @@
 .footer-section {
   background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #1e293b 100%);
-  padding: 60px 40px 0;
-  border-top: 1px solid #e8ecef;
+  padding: 80px min(40px, 5%) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
 
@@ -59,19 +59,20 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        padding: 12px;
+        padding: 14px;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.25);
         margin-right: 16px;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
 
         &:hover {
-          border-color: #ffffff;
-          background: rgba(255, 255, 255, 0.15);
-          transform: translateY(-4px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+          border-color: rgba(255, 255, 255, 0.9);
+          background: rgba(255, 255, 255, 0.2);
+          transform: translateY(-6px) scale(1.1);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(255, 255, 255, 0.1);
         }
       }
     }

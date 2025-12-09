@@ -10,7 +10,7 @@ const Banner: React.FC<Props> = ({ imgSrc }) => {
       className={`${styles.banner} padding-wrapper complete`}
       style={{ backgroundImage: `url(${imgSrc})` }}>
       <div className={styles['banner-content']}>
-        <h1>Modern Property Management Platform</h1>
+        <h1>Your Real Estate and Condominium Management Solution</h1>
         <p className={`${styles['large']} large`}>
           Streamline operations. Automate workflows. Maximize efficiency. Data-driven insights. Property management,
           simplified.

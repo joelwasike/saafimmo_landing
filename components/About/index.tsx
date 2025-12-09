@@ -1,73 +1,80 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { PersonType } from 'types/person';
-import Person from './components/Person';
 import styles from './About.module.scss';
+import BusinessIcon from '@mui/icons-material/Business';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import SecurityIcon from '@mui/icons-material/Security';
+import SupportIcon from '@mui/icons-material/Support';
 
-const people: PersonType[] = [
+interface CompanyInfo {
+  id: number;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const companyInfo: CompanyInfo[] = [
   {
     id: 1,
-    name: 'Dr. Sarah Mitchell',
-    avatar: '/people/1.png',
-    role: 'CHIEF EXECUTIVE OFFICER',
-    summary:
-      'MBA from Harvard Business School, 18+ years in real estate technology, former VP at leading PropTech companies',
-    description: `Dr. Sarah Mitchell brings over 18 years of executive leadership experience in the property management technology sector. She holds an MBA from Harvard Business School and a Ph.D. in Real Estate Finance from MIT. Prior to joining Saaf Immo, Sarah served as Vice President of Product Strategy at Buildium, where she led the development of solutions serving over 20,000 property management companies. She has been instrumental in raising $45M in venture capital and scaling technology platforms that manage over $50 billion in property assets. Sarah is a recognized thought leader, having published 12 research papers on property management automation and spoken at 30+ industry conferences worldwide.`,
+    icon: <BusinessIcon sx={{ fontSize: 48, color: '#60a5fa' }} />,
+    title: 'Our Mission',
+    description: 'To revolutionize property and condominium management through innovative technology solutions that streamline operations, enhance tenant experiences, and maximize property value. We empower property managers with tools that simplify complex workflows and provide data-driven insights for better decision-making.',
   },
-
   {
     id: 2,
-    name: 'Michael Chen',
-    avatar: '/people/1.png',
-    role: 'CHIEF PRODUCT OFFICER',
-    summary:
-      'Stanford CS graduate, 15+ years product leadership, former Director of Product at AppFolio and Yardi Systems',
-
-    description: `Michael Chen is a product innovation leader with 15+ years of experience designing enterprise software solutions for the real estate industry. He holds a Master's in Computer Science from Stanford University and a Bachelor's in Business Administration from UC Berkeley. Michael previously served as Director of Product Management at AppFolio, where he led a team of 25 product managers and designers, launching features that increased user engagement by 40%. Before that, he spent 8 years at Yardi Systems, where he architected products now used by 11,000+ property management companies globally. Michael holds 3 patents in property management automation and has been featured in TechCrunch and Forbes for his innovative approach to PropTech product development.`,
+    icon: <TrendingUpIcon sx={{ fontSize: 48, color: '#60a5fa' }} />,
+    title: 'Our Vision',
+    description: 'To become the leading platform for property management in the real estate industry, recognized for our commitment to innovation, reliability, and customer success. We envision a future where property management is seamless, automated, and accessible to all.',
   },
-
   {
     id: 3,
-    name: 'Jennifer Rodriguez',
-    avatar: '/people/1.png',
-    role: 'CHIEF OPERATING OFFICER',
-    summary:
-      'Wharton MBA, 20+ years operations excellence, former COO at RealPage with expertise in scaling SaaS operations',
-
-    description: `Jennifer Rodriguez is an operations executive with 20+ years of experience building and scaling high-growth technology companies. She earned her MBA from The Wharton School at the University of Pennsylvania and holds a Bachelor's in Industrial Engineering from Georgia Tech. Jennifer previously served as Chief Operating Officer at RealPage, where she managed operations for a $1.2B revenue business serving 19 million units globally. She led initiatives that improved operational efficiency by 35% and reduced customer churn by 28%. Jennifer is a certified Six Sigma Black Belt and has expertise in process optimization, customer success, and international expansion. She has successfully scaled operations across 12 countries and managed teams of over 500 employees.`,
+    icon: <SecurityIcon sx={{ fontSize: 48, color: '#60a5fa' }} />,
+    title: 'Security & Reliability',
+    description: 'We prioritize the security and privacy of your data. Our platform is built with enterprise-grade security measures, including end-to-end encryption, regular security audits, and compliance with industry standards. With 99.99% uptime, you can trust us to keep your operations running smoothly.',
   },
-
   {
     id: 4,
-    name: 'David Kim',
-    avatar: '/people/1.png',
-    role: 'CHIEF TECHNOLOGY OFFICER',
-    summary:
-      'MIT Computer Science, 22+ years engineering leadership, former Principal Architect at Salesforce and Microsoft',
-    description: `David Kim is a technology visionary with 22+ years of experience architecting enterprise-scale software systems. He holds a Master's in Computer Science from MIT and a Bachelor's in Software Engineering from Carnegie Mellon University. David previously served as Principal Architect at Salesforce, where he designed cloud infrastructure handling 50+ million daily transactions. Before that, he spent 10 years at Microsoft, leading teams that built Azure services now used by Fortune 500 companies. David is an expert in distributed systems, cloud architecture, and AI/ML applications. He has published 8 technical papers, holds 5 patents in cloud computing, and has been a keynote speaker at AWS re:Invent and Google Cloud Next. Under his leadership, Saaf Immo's platform processes over 100 million property transactions annually with 99.99% uptime.`,
+    icon: <SupportIcon sx={{ fontSize: 48, color: '#60a5fa' }} />,
+    title: 'Customer Success',
+    description: 'Your success is our success. We provide comprehensive onboarding, 24/7 customer support, and continuous platform improvements based on your feedback. Our dedicated team is committed to helping you achieve your property management goals.',
   },
 ];
+
 const About = () => {
-  const [show, setShow] = React.useState(false);
-
-  const toggleShow = () => {
-    setShow((value) => !value);
-  };
-
   return (
     <section id="about-us" className={styles.about}>
       <div className={styles['about-header']}>
-        <h3>About Us</h3>
-        <p>A dedicated team with deep expertise in property management, technology, and real estate operations.</p>
+        <h3>About Saaf Immo</h3>
+        <p>
+          A comprehensive property management platform designed to streamline operations, tenant management, and financial reporting for real estate and condominium properties.
+        </p>
       </div>
       <div className={styles['about-content']}>
-        <Grid container columnSpacing={2} rowSpacing={2}>
-          {people.map((person, index) => (
-            <Grid item xs={12} sm={12} md={6} lg={6} key={index}>
-              <Person person={person} styles={styles} show={show} toggleShow={toggleShow} />
+        <Grid container columnSpacing={3} rowSpacing={3}>
+          {companyInfo.map((info) => (
+            <Grid item xs={12} sm={12} md={6} lg={6} key={info.id}>
+              <div className={styles['info-card']}>
+                <div className={styles['info-card-icon']}>{info.icon}</div>
+                <div className={styles['info-card-content']}>
+                  <h4>{info.title}</h4>
+                  <p className={styles['info-card-description']}>{info.description}</p>
+                </div>
+              </div>
             </Grid>
           ))}
         </Grid>
+        <div className={styles['about-story']}>
+          <h4>Our Story</h4>
+          <p>
+            Saaf Immo was founded with a simple yet powerful vision: to transform the way property and condominium management is done. Recognizing the challenges faced by property managers—from manual processes to fragmented systems—we set out to create an all-in-one platform that brings everything together.
+          </p>
+          <p>
+            Today, our platform serves property management companies, real estate professionals, and condominium associations, helping them manage thousands of units efficiently. We combine cutting-edge technology with deep industry expertise to deliver solutions that not only meet today's needs but anticipate tomorrow's challenges.
+          </p>
+          <p>
+            We're committed to continuous innovation, listening to our customers, and building a platform that grows with your business. Whether you're managing a single condominium building or a large portfolio of properties, Saaf Immo provides the tools and insights you need to succeed.
+          </p>
+        </div>
       </div>
     </section>
   );
